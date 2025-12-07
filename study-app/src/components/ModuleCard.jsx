@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
-function ModuleCard({ module }) {
-  // pastel illustration placeholders
+function ModuleCard({ module, onDelete }) {
+
   const images = [
     "https://assets.codepen.io/285131/illustration-hand-with-cigarette-icon.jpg",
     "https://assets.codepen.io/285131/hand-drawn-monster-milkshake.jpg",
@@ -21,16 +21,32 @@ function ModuleCard({ module }) {
 
         <div className="card-content">
           <div className="card-meta">
-            <span className="card-meta-number">
-              Semester {module.semester}
-            </span>
+            <span className="card-meta-number">Semester {module.semester}</span>
 
-            <button className="card-meta-button">
-              <i className="ai-circle-triangle-right-fill"></i>
-            </button>
+            <div className="card-actions">
+
+              <Link to={`/modules/edit/${module._id}`}>
+                <button className="icon-btn">✏️</button>
+              </Link>
+
+              <button 
+                className="icon-btn delete-btn"
+                onClick={() => onDelete(module._id)}
+              >
+                🗑️
+              </button>
+            </div>
           </div>
 
           <h2 className="card-title">{module.title}</h2>
+
+          <div className="progress-container">
+            <div
+              className="progress-fill"
+              style={{ transform: `scaleX(${module.progress / 100})` }}
+            ></div>
+          </div>
+          <p className="progress-label">{module.progress}% Complete</p>
 
           <Link to={`/modules/${module._id}`}>
             <button className="view-btn">View</button>

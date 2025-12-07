@@ -2,13 +2,14 @@ import { Routes, Route, Link } from "react-router-dom";
 import ModulesPage from "./pages/ModulesPage";
 import AddModulePage from "./pages/AddModulePage";
 import ModuleDetailsPage from "./pages/ModuleDetailsPage";
+import EditModulePage from "./pages/EditModulePage";
 import "./styles/StudyUI.css";
 
 function App() {
   return (
     <div className="app-container">
 
-      {/* HEADER */}
+
       <header className="web-header">
         <div className="header-left">
           <div className="logo-icon">
@@ -33,12 +34,13 @@ function App() {
         </div>
       </header>
 
-      {/* MAIN CONTENT */}
+ 
       <main className="page-content">
         <Routes>
           <Route path="/" element={<ModulesPage />} />
           <Route path="/modules/new" element={<AddModulePage />} />
           <Route path="/modules/:id" element={<ModuleDetailsPage />} />
+          <Route path="/modules/edit/:id" element={<EditModulePage />} />
         </Routes>
       </main>
     </div>
