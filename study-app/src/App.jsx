@@ -3,6 +3,8 @@ import ModulesPage from "./pages/ModulesPage";
 import AddModulePage from "./pages/AddModulePage";
 import ModuleDetailsPage from "./pages/ModuleDetailsPage";
 import EditModulePage from "./pages/EditModulePage";
+import DashboardPage from "./pages/DashboardPage";
+
 import "./styles/StudyUI.css";
 
 function App() {
@@ -21,6 +23,7 @@ function App() {
         <nav className="header-nav">
           <Link to="/">Modules</Link>
           <Link to="/modules/new">Add Module</Link>
+          <Link to="/dashboard">Dashboard</Link>
         </nav>
 
         <div className="header-right">
@@ -28,9 +31,6 @@ function App() {
             <i className="ai-bell"></i>
           </button>
 
-          <button className="avatar-btn">
-            <img src="https://assets.codepen.io/285131/pexels-photo-838875.jpeg" />
-          </button>
         </div>
       </header>
 
@@ -41,6 +41,8 @@ function App() {
           <Route path="/modules/new" element={<AddModulePage />} />
           <Route path="/modules/:id" element={<ModuleDetailsPage />} />
           <Route path="/modules/edit/:id" element={<EditModulePage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
+
         </Routes>
       </main>
     </div>

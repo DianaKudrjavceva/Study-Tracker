@@ -3,25 +3,18 @@ import Module from "../models/Module.js";
 
 const router = express.Router();
 
-/* =============================
-   GET ALL MODULES
-============================= */
 router.get("/", async (req, res) => {
   const modules = await Module.find();
   res.json(modules);
 });
 
-/* =============================
-   GET SINGLE MODULE
-============================= */
+
 router.get("/:id", async (req, res) => {
   const module = await Module.findById(req.params.id);
   res.json(module);
 });
 
-/* =============================
-   CREATE NEW MODULE
-============================= */
+
 router.post("/", async (req, res) => {
   try {
     const newModule = new Module(req.body);
@@ -32,9 +25,7 @@ router.post("/", async (req, res) => {
   }
 });
 
-/* =============================
-   UPDATE MODULE
-============================= */
+
 router.put("/:id", async (req, res) => {
   try {
     const updated = await Module.findByIdAndUpdate(req.params.id, req.body, {
@@ -46,9 +37,7 @@ router.put("/:id", async (req, res) => {
   }
 });
 
-/* =============================
-   DELETE MODULE
-============================= */
+
 router.delete("/:id", async (req, res) => {
   try {
     await Module.findByIdAndDelete(req.params.id);
@@ -58,11 +47,7 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-/* ========================================
-    TASK ROUTES
-======================================== */
 
-/* --- ADD TASK --- */
 router.post("/:id/tasks", async (req, res) => {
   try {
     const module = await Module.findById(req.params.id);
@@ -74,7 +59,7 @@ router.post("/:id/tasks", async (req, res) => {
   }
 });
 
-/* --- GET TASKS FOR A MODULE --- */
+
 router.get("/:id/tasks", async (req, res) => {
   try {
     const module = await Module.findById(req.params.id);
@@ -84,7 +69,7 @@ router.get("/:id/tasks", async (req, res) => {
   }
 });
 
-/* --- UPDATE / TOGGLE TASK COMPLETION --- */
+
 router.put("/tasks/:taskId", async (req, res) => {
   try {
     const module = await Module.findOne({ "tasks._id": req.params.taskId });
@@ -99,7 +84,7 @@ router.put("/tasks/:taskId", async (req, res) => {
   }
 });
 
-/* --- DELETE TASK --- */
+
 router.delete("/tasks/:taskId", async (req, res) => {
   try {
     const module = await Module.findOne({ "tasks._id": req.params.taskId });
@@ -115,11 +100,7 @@ router.delete("/tasks/:taskId", async (req, res) => {
   }
 });
 
-/* ========================================
-     NOTES ROUTE
-======================================== */
 
-/* --- UPDATE NOTES FOR A MODULE --- */
 router.put("/:id/notes", async (req, res) => {
   try {
     const module = await Module.findById(req.params.id);

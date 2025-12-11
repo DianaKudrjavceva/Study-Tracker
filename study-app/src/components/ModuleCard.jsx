@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function ModuleCard({ module, onDelete }) {
 
-  // fallback pastel images
+
   const images = [
     "https://assets.codepen.io/285131/illustration-hand-with-cigarette-icon.jpg",
     "https://assets.codepen.io/285131/hand-drawn-monster-milkshake.jpg",
@@ -11,11 +11,11 @@ function ModuleCard({ module, onDelete }) {
 
   const randomImg = images[Math.floor(Math.random() * images.length)];
 
-  // ⭐ Bulletproof check for uploaded image
+
   const hasImage =
     module?.image &&
     typeof module.image === "string" &&
-    module.image.trim().length > 10; // base64 strings are long
+    module.image.trim().length > 10; 
 
   const displayImage = hasImage ? module.image : randomImg;
 
@@ -50,7 +50,7 @@ function ModuleCard({ module, onDelete }) {
 
           <h2 className="card-title">{module.title}</h2>
 
-          {/* PROGRESS */}
+ 
           <div className="progress-container">
             <div
               className="progress-fill"

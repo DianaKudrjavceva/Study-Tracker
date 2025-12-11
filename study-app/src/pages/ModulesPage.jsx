@@ -30,9 +30,7 @@ function ModulesPage() {
     }
   };
 
-  /* ------------------------------
-        FILTERED MODULES LIST
-  ------------------------------ */
+
   const filteredModules = modules.filter((mod) => {
     const text = searchTerm.toLowerCase();
 
@@ -51,7 +49,7 @@ function ModulesPage() {
         Track your study progress this semester.
       </p>
 
-      {/* SEARCH BAR */}
+
       <div className="search-bar">
         <input
           placeholder="Search modules..."
@@ -60,7 +58,7 @@ function ModulesPage() {
         />
       </div>
 
-      {/* MODULE LIST */}
+
       <div className="module-card-grid">
         {filteredModules.map((m) => (
           <ModuleCard

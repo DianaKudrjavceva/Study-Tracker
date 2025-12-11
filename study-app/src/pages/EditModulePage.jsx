@@ -18,7 +18,7 @@ function EditModulePage() {
 
   const [loading, setLoading] = useState(true);
 
-  // ---- LOAD MODULE DATA ----
+
   useEffect(() => {
     const fetchModule = async () => {
       try {
@@ -33,18 +33,18 @@ function EditModulePage() {
     fetchModule();
   }, [id]);
 
-  // ---- UPDATE FORM FIELDS ----
+
   const updateField = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // ---- SUBMIT UPDATE ----
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
       await api.put(`/modules/${id}`, formData);
-      navigate("/"); // redirect back
+      navigate("/"); 
     } catch (err) {
       console.error("Failed to update module:", err);
     }
@@ -58,7 +58,7 @@ function EditModulePage() {
 
       <form className="styled-form" onSubmit={handleSubmit}>
 
-        {/* TITLE */}
+
         <label className="form-label">Module Title</label>
         <input
           name="title"
@@ -67,7 +67,7 @@ function EditModulePage() {
           placeholder="Enter module name..."
         />
 
-        {/* LECTURER */}
+
         <label className="form-label">Lecturer</label>
         <input
           name="lecturer"
@@ -76,7 +76,6 @@ function EditModulePage() {
           placeholder="Lecturer name..."
         />
 
-        {/* SEMESTER DROPDOWN */}
         <label className="form-label">Semester</label>
         <select
           name="semester"
@@ -89,7 +88,7 @@ function EditModulePage() {
           <option value="2">Semester 2</option>
         </select>
 
-        {/* CATEGORY DROPDOWN */}
+
         <label className="form-label">Category</label>
         <select
           name="category"
@@ -105,7 +104,7 @@ function EditModulePage() {
           <option value="Marketing">Marketing</option>
         </select>
 
-        {/* DIFFICULTY STARS */}
+
         <label className="form-label">Difficulty</label>
         <div className="difficulty-stars">
           {[1, 2, 3, 4, 5].map((num) => (
@@ -119,21 +118,7 @@ function EditModulePage() {
           ))}
         </div>
 
-        {/* PROGRESS SLIDER */}
-        <label className="form-label">
-          Progress: {formData.progress}%
-        </label>
-        <input
-          type="range"
-          name="progress"
-          min="0"
-          max="100"
-          value={formData.progress}
-          onChange={updateField}
-          className="progress-slider"
-        />
 
-        {/* STATUS DROPDOWN */}
         <label className="form-label">Status</label>
         <select
           name="status"

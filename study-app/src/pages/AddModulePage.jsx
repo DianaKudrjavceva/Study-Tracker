@@ -13,7 +13,7 @@ function AddModulePage() {
     difficulty: 0,
     progress: 0,
     status: "",
-    image: ""   // IMPORTANT
+    image: ""   
   });
 
   const handleImageUpload = (e) => {
@@ -103,17 +103,6 @@ function AddModulePage() {
           ))}
         </div>
 
-        <label className="form-label">Progress: {formData.progress}%</label>
-        <input
-          type="range"
-          name="progress"
-          min="0"
-          max="100"
-          value={formData.progress}
-          onChange={updateField}
-          className="progress-slider"
-        />
-
         <label className="form-label">Status</label>
         <select
           name="status"
@@ -126,7 +115,7 @@ function AddModulePage() {
           <option value="Completed">Completed</option>
         </select>
 
-        {/* IMAGE UPLOAD MUST BE BEFORE SUBMIT */}
+
         <label className="form-label">Module Image</label>
         <input
           type="file"
